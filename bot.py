@@ -1,3 +1,11 @@
+import os
+import sys
+
+# Railway specific path for playwright
+if os.environ.get('RAILWAY_ENVIRONMENT'):
+    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = '/ms-playwright'
+    os.environ['PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD'] = '0'
+
 #!/usr/bin/env python3
 """
 ====================================================================================================
