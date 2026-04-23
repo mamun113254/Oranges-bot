@@ -1,10 +1,21 @@
+#!/usr/bin/env python3
 import os
 import sys
+import subprocess
 
-# Railway specific path for playwright
+# রেলওয়ের জন্য ব্রাউজার সেটআপ
 if os.environ.get('RAILWAY_ENVIRONMENT'):
-    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = '/ms-playwright'
-    os.environ['PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD'] = '0'
+    print("🔧 Setting up Playwright on Railway...")
+    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = '/cache/ms-playwright'
+    try:
+        subprocess.run(['python', '-m', 'playwright', 'install', 'chromium'], check=True)
+        print("✅ Chromium installed successfully")
+    except Exception as e:
+        print(f"⚠️ Install error: {e}")
+        # বিকল্প পদ্ধতি
+        subprocess.run(['playwright', 'install', 'chromium'], shell=True)
+
+# আপনার বাকি কোড এখানে...
 
 #!/usr/bin/env python3
 """
