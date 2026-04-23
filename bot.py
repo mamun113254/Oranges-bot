@@ -3,7 +3,7 @@ import os
 import sys
 import subprocess
 
-# রেলওয়ের জন্য ব্রাউজার সেটআপ
+# 
 if os.environ.get('RAILWAY_ENVIRONMENT'):
     print("🔧 Setting up Playwright on Railway...")
     os.environ['PLAYWRIGHT_BROWSERS_PATH'] = '/cache/ms-playwright'
